@@ -1,0 +1,24 @@
+h1 
+{
+    color: white;
+    font-style: normal;
+}
+img
+{
+    width: 225px;
+    height: 127px;
+    object-fit: cover;
+}
+div
+{
+    text-align: center;
+}
+h3
+{
+    color: white;
+}
+body
+{
+    background-color: black;
+    color: white;
+}
