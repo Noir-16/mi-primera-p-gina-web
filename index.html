@@ -1,34 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Assassin's Creed</title>
-    <link rel="stylesheet" href="estilo.css">
+  <meta charset="UTF-8">
+  <title>Assassin's Creed</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div>
-        <h1>Assassin's Creed.</h1>
-        <h3>Introducción.</h3>
-        <img src="img/1.jpg" alt="">
-        <img src="img/2.jpg" alt="">
-        <p>Assassins Creed es un videojuego de aventura de acción y de sigilo en la que el jugador sobre todo asume el papel de Altaïr, experimentado por el protagonista Desmond Miles. El objetivo principal del juego es llevar a cabo una serie de asesinatos ordenados por Al Mualim, el líder de los asesinos.</p>
-        <h3>Assassin's Creed (2007).</h3>
-        <img src="img/3.jpg" alt="">
-        <img src="img/4.jpg" alt="">
-        <br>
-        <p>La historia gira en torno al conflicto entre dos "facciones" que lucharon entre sí durante cientos de años, pero la narración del juego comienza en las cruzadas del siglo XII.</p>
-        <br>
-        <h3>Assassin's Creed II (2009).</h3>
-        <img src="img/5.jpg" alt="">
-        <img src="img/6.jpg" alt="">
-        <br>
-        <p>Esta entrega está ambientada en el Renacimiento. Parte con un nuevo personaje llamado Ezio Auditore Da Firenze, un joven de clase acomodada de la sociedad de la República de Florencia.</p>
-        <h3>Assassin's Creed: Brotherhood (2010).</h3>
-        <img src="img/7.jpg" alt="">
-        <img src="img/8.jpg" alt="">
-        <br>
-        <p>La historia de Ezio Auditore continúa en 1499, donde él sale de la Bóveda, confundido por lo que vio en el interior. Escapa de Roma con su tío Mario Auditore y llega a Monteriggioni. Una vez en casa, Ezio es consolado por la posibilidad de que su venganza personal y sus días como un asesino han terminado.</p>
-    </div>
-    <h2>Autor: Litsy Romero.</h2>
-    </body>
+  <header>
+    <h1>Assassin's Creed</h1>
+    <button onclick="cambiarTema()">Cambiar tema</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Introducción</h2>
+      <img src="img/1.jpg" alt="">
+      <img src="img/2.jpg" alt="">
+      <p>Assassin's Creed es un videojuego de aventura, acción y sigilo donde el jugador asume el papel de Altaïr, a través de Desmond Miles. Su objetivo es realizar asesinatos ordenados por Al Mualim, líder de los asesinos.</p>
+    </section>
+
+    <section>
+      <h2>Assassin's Creed (2007)</h2>
+      <img src="img/3.jpg" alt="">
+      <img src="img/4.jpg" alt="">
+      <p>La historia inicia en las Cruzadas del siglo XII, presentando el conflicto entre dos facciones que han luchado durante siglos.</p>
+    </section>
+
+    <section>
+      <h2>Assassin's Creed II (2009)</h2>
+      <img src="img/5.jpg" alt="">
+      <img src="img/6.jpg" alt="">
+      <p>Ambientado en el Renacimiento, introduce a Ezio Auditore Da Firenze, joven noble de la República de Florencia.</p>
+    </section>
+
+    <section>
+      <h2>Assassin's Creed: Brotherhood (2010)</h2>
+      <img src="img/7.jpg" alt="">
+      <img src="img/8.jpg" alt="">
+      <p>Ezio continúa su historia en 1499 tras escapar de Roma con su tío Mario y llega a Monteriggioni, creyendo haber dejado atrás su vida como asesino.</p>
+    </section>
+
+    <section class="comentarios">
+      <h2>Deja tu comentario</h2>
+      <input type="text" id="nombre" placeholder="Tu nombre">
+      <textarea id="mensaje" rows="4" placeholder="Tu comentario"></textarea>
+      <button onclick="publicarComentario()">Publicar</button>
+      <div id="comentariosPublicados"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Autor: Litsy Romero | &copy; <span id="year"></span></p>
+  </footer>
+
+  <script>
+    function cambiarTema() {
+      document.body.classList.toggle('light');
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function publicarComentario() {
+      const nombre = document.getElementById("nombre").value;
+      const mensaje = document.getElementById("mensaje").value;
+
+      if (nombre.trim() !== "" && mensaje.trim() !== "") {
+        const comentarioDiv = document.createElement("div");
+        comentarioDiv.className = "publicado";
+        comentarioDiv.innerHTML = `<strong>${nombre}</strong><p>${mensaje}</p>`;
+        document.getElementById("comentariosPublicados").appendChild(comentarioDiv);
+        document.getElementById("nombre").value = "";
+        document.getElementById("mensaje").value = "";
+      } else {
+        alert("Por favor, completa ambos campos.");
+      }
+    }
+  </script>
+</body>
 </html>
